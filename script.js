@@ -1,17 +1,17 @@
 function activarVoz() {
-  console.log("Asistente activado");
+  console.log("🎙️ Asistente activado");
   const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
   recognition.lang = 'es-ES';
   recognition.start();
 
   recognition.onresult = function(event) {
-    const query = event.results[0][0].transcript.toLowerCase();
-    console.log("Has dicho:", query);
+    const query = event.results[0][0].transcript.toLowerCase().trim();
+    console.log("🗣️ Has dicho:", query);
     responderVoz(query);
   };
 
   recognition.onerror = function(event) {
-    alert("Error al reconocer voz: " + event.error);
+    alert("❌ Error al reconocer voz: " + event.error);
   };
 }
 
@@ -22,14 +22,23 @@ async function responderVoz(texto) {
     respuesta = 'Hoy el Real Madrid ha entrenado con todos sus titulares. En breve más noticias.';
   } else if (texto.includes('barça') || texto.includes('barcelona')) {
     respuesta = 'El Barça prepara su próximo partido de liga con varias bajas importantes.';
-  } else if (texto.includes('últimas noticias') || texto.includes('qué ha pasado') || texto.includes('noticias deportivas')) {
+  } else if (
+    texto.includes('últimas noticias') ||
+    texto.includes('qué ha pasado') ||
+    texto.includes('noticias deportivas') ||
+    texto.includes('noticias')
+  ) {
     respuesta = await obtenerNoticiasDeportivas();
   } else {
-    respuesta = 'Estoy aprendiendo más cada día. Pronto podré decirte aún más cosas.';
+    respuesta = 'Lo siento, no entendí bien tu pregunta. Puedes probar diciendo "Últimas noticias deportivas" o el nombre de tu equipo favorito.';
   }
 
+  hablar(respuesta);
+}
+
+function hablar(texto) {
   const synth = window.speechSynthesis;
-  const utter = new SpeechSynthesisUtterance(respuesta);
+  const utter = new SpeechSynthesisUtterance(texto);
   utter.lang = 'es-ES';
   synth.speak(utter);
 }
@@ -50,3 +59,4 @@ async function obtenerNoticiasDeportivas() {
     return 'Hubo un problema al obtener las noticias. Inténtalo más tarde.';
   }
 }
+
