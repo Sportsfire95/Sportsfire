@@ -15,34 +15,17 @@ function activarVoz() {
   };
 }
 
-function responderVoz(texto) {
+async function responderVoz(texto) {
   let respuesta = '';
 
   if (texto.includes('madrid') || texto.includes('real madrid')) {
-    const opciones = [
-      'El Real Madrid ha ganado 3 a 1 con goles de Bellingham y Vinicius.',
-      'Hoy el Madrid jugó contra el Sevilla y empató 2 a 2.',
-      'El Real Madrid se prepara para el clásico del próximo domingo.'
-    ];
-    respuesta = elegirAleatoria(opciones);
+    respuesta = 'Hoy el Real Madrid ha entrenado con todos sus titulares. En breve más noticias.';
   } else if (texto.includes('barça') || texto.includes('barcelona')) {
-    const opciones = [
-      'El FC Barcelona ganó por la mínima frente al Betis.',
-      'Lewandowski marcó el gol de la victoria para el Barça.',
-      'El Barça se mantiene segundo en la tabla tras la victoria de hoy.'
-    ];
-    respuesta = elegirAleatoria(opciones);
-  } else if (texto.includes('fórmula 1') || texto.includes('formula 1') || texto.includes('f1')) {
-    const opciones = [
-      'En Fórmula 1, Verstappen sigue dominando tras ganar en Australia.',
-      'Checo Pérez consiguió el segundo puesto esta semana.',
-      'Ferrari ha tenido problemas de fiabilidad en la última carrera.'
-    ];
-    respuesta = elegirAleatoria(opciones);
-  } else if (texto.includes('últimas noticias')) {
-    respuesta = 'Puedes encontrar las últimas noticias deportivas justo en la portada de Sportsfire.';
+    respuesta = 'El Barça prepara su próximo partido de liga con varias bajas importantes.';
+  } else if (texto.includes('últimas noticias') || texto.includes('qué ha pasado') || texto.includes('noticias deportivas')) {
+    respuesta = await obtenerNoticiasDeportivas();
   } else {
-    respuesta = 'No tengo esa información aún, pero pronto podrás preguntarme de todo. ¡Seguimos mejorando!';
+    respuesta = 'Estoy aprendiendo más cada día. Pronto podré decirte aún más cosas.';
   }
 
   const synth = window.speechSynthesis;
@@ -51,6 +34,20 @@ function responderVoz(texto) {
   synth.speak(utter);
 }
 
-function elegirAleatoria(lista) {
-  return lista[Math.floor(Math.random() * lista.length)];
+async function obtenerNoticiasDeportivas() {
+  try {
+    const respuesta = await fetch('https://newsapi.org/v2/top-headlines?category=sports&language=es&apiKey=e641c212093f4ff3b0b7709ac39a5606');
+    const datos = await respuesta.json();
+
+    if (datos.articles && datos.articles.length > 0) {
+      const primeraNoticia = datos.articles[0].title;
+      return 'Última noticia deportiva: ' + primeraNoticia;
+    } else {
+      return 'No encontré noticias deportivas actuales ahora mismo.';
+    }
+  } catch (error) {
+    console.error("Error al obtener noticias:", error);
+    return 'Hubo un problema al obtener las noticias en este momento.';
+  }
 }
+
