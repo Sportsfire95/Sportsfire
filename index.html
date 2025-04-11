@@ -3,90 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sportsfire - Portal deportivo revolucionario. Noticias, fichajes, resultados, y experiencias inmersivas como nunca antes." />
   <title>Sportsfire</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="logo.png" type="image/png" />
-  <script defer src="script.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
-      <div class="logo-container">
-        <img src="logo.png" alt="Sportsfire Logo" class="logo" />
-        <span class="brand-name">SportsFire</span>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#futbol">Fútbol</a></li>
-        <li><a href="#multideporte">Multideporte</a></li>
-        <li><a href="#mercado">Mercado</a></li>
-        <li><a href="#comunidad">Comunidad</a></li>
-        <li><a href="#tienda">Tienda</a></li>
-        <li><a href="#premium">Premium</a></li>
-      </ul>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="logo.png" alt="Sportsfire Logo" class="logo" />
+      <span class="brand-name">SportsFire</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Fútbol</a></li>
+      <li><a href="#">Multideporte</a></li>
+      <li><a href="#">Mercado</a></li>
+      <li><a href="#">Comunidad</a></li>
+      <li><a href="#">Tienda</a></li>
+      <li><a href="#">Premium</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <h1>Bienvenido a Sportsfire</h1>
+    <p>El futuro del deporte en un solo lugar. Vive, escucha, predice y participa como nunca antes.</p>
+    <button class="cta">Hazte Premium</button>
   </header>
 
-  <main>
-    <section id="hero">
-      <h1>Bienvenido a <span class="highlight">Sportsfire</span></h1>
-      <p>El futuro del deporte en un solo lugar. Vive, escucha, predice y participa como nunca antes.</p>
-      <a href="#premium" class="cta-button">Hazte Premium</a>
-    </section>
+  <!-- Secciones -->
+  <section>
+    <h2>Fútbol</h2>
+    <p>Todo sobre LaLiga, Champions, fichajes, estadísticas en tiempo real y visualización 3D de jugadas clave.</p>
+  </section>
 
-    <section id="futbol">
-      <h2>Fútbol</h2>
-      <p>Todo sobre LaLiga, Champions, fichajes, estadísticas en tiempo real y visualización 3D de jugadas clave.</p>
-    </section>
+  <section>
+    <h2>Multideporte</h2>
+    <p>F1 con datos en vivo, tenis con predicción IA, eSports con streaming integrado.</p>
+  </section>
 
-    <section id="multideporte">
-      <h2>Multideporte</h2>
-      <p>F1 con datos en vivo, tenis con predicción IA, eSports con streaming integrado.</p>
-    </section>
+  <section>
+    <h2>Mercado y Tweets en vivo</h2>
+    <p>Cargando tweets en vivo de expertos como @FabrizioRomano, @Nico_Abatel y más…</p>
+  </section>
 
-    <section id="mercado">
-      <h2>Mercado y Tweets en vivo</h2>
-      <div id="tweets-stream">
-        <p>Cargando tweets en vivo de expertos como @FabrizioRomano, @Nico_Abatel y más...</p>
-      </div>
-    </section>
+  <section>
+    <h2>Asistente de Voz Deportiva</h2>
+    <p>Di: "¿Qué ha pasado en el Madrid hoy?" y nuestro sistema lo narrará con voz natural.</p>
+    <button class="btn">Activar asistente</button>
+  </section>
 
-    <section id="voz">
-      <h2>Asistente de Voz Deportiva</h2>
-      <p>Di: "¿Qué ha pasado en el Madrid hoy?" y nuestro sistema lo narrará con voz natural.</p>
-      <button onclick="activarVoz()">Activar asistente</button>
-    </section>
+  <section>
+    <h2>Comunidad</h2>
+    <p>Únete a debates, crea contenido, gana puntos y sube de nivel en nuestra comunidad deportiva.</p>
+  </section>
 
-    <section id="comunidad">
-      <h2>Comunidad</h2>
-      <p>Predicciones interactivas, debates en vivo, foros y competiciones fantasy con recompensas reales.</p>
-    </section>
-
-    <section id="tienda">
-      <h2>Tienda</h2>
-      <p>Equipaciones exclusivas, artículos retro, NFTs deportivos únicos y sorteos con premios semanales.</p>
-    </section>
-
-    <section id="premium">
-      <h2>Hazte Premium</h2>
-      <ul>
-        <li>Noticias antes que nadie</li>
-        <li>Dictado personalizado diario por voz</li>
-        <li>Predicciones IA para apuestas legales</li>
-        <li>Contenido sin publicidad</li>
-        <li>Acceso a eventos y torneos privados</li>
-      </ul>
-      <button class="cta-button">Suscribirme</button>
-    </section>
-
-    <section id="explora">
-      <h2>Explora el Deporte en 360º</h2>
-      <p>Visualiza estadios y jugadas clave en 3D, recorre vestuarios y revive goles históricos con realidad aumentada.</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Sportsfire. Revoluciona tu forma de vivir el deporte.</p>
-  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
+
