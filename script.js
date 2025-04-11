@@ -59,4 +59,3 @@ async function obtenerNoticiasDeportivas() {
     return 'Hubo un problema al obtener las noticias. Inténtalo más tarde.';
   }
 }
-
