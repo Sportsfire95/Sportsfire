@@ -1,124 +1,113 @@
-/* Estilos base */
+/* Fuente personalizada deportiva */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #121212;
-  color: #f0f0f0;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Navbar */
-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #1e1e1e;
-  padding: 0.8rem 2rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #111;
+  color: #fff;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: auto;
+  background-color: #121212;
+  padding: 10px 30px;
+  border-bottom: 3px solid #FF6B00;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
+  gap: 12px;
 }
 
 .logo {
-  height: 40px;
+  height: 80px;
   width: auto;
   margin-right: 10px;
+  filter: drop-shadow(0 0 4px rgba(255, 115, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .brand-name {
-  font-size: 1.8rem;
-  font-weight: bold;
-  background: linear-gradient(to right, #ff5f00, #ffffff, #ff9100);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  color: #FF6B00;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-/* Navegación */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.5rem;
+  gap: 25px;
 }
 
 .nav-links li a {
-  font-size: 1rem;
-  color: #f0f0f0;
-  padding: 5px 10px;
-  transition: all 0.3s ease;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
 }
 
 .nav-links li a:hover {
-  background-color: #ff5f00;
-  color: #000;
-  border-radius: 6px;
+  color: #FF6B00;
 }
 
-/* Hero */
-#hero {
-  padding: 6rem 2rem 4rem;
+.hero {
+  padding: 50px 30px;
   text-align: center;
-  background: linear-gradient(to bottom, #1e1e1e, #121212);
 }
 
-#hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
+.hero h1 {
+  font-size: 40px;
+  color: #FF6B00;
 }
 
-.highlight {
-  color: #ff5f00;
-}
-
-.cta-button {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
-  background-color: #ff5f00;
-  color: #000;
+.cta {
+  background-color: #FF6B00;
   border: none;
-  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  margin-top: 20px;
 }
 
-.cta-button:hover {
-  background-color: #ffa94d;
+.cta:hover {
+  background-color: #e55e00;
 }
 
-/* Secciones */
 section {
-  padding: 3rem 2rem;
-  max-width: 1000px;
-  margin: auto;
+  padding: 40px 30px;
 }
 
 section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #ff9100;
+  color: #FF6B00;
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 2rem;
-  font-size: 0.9rem;
-  color: #888;
-  background-color: #1a1a1a;
+.btn {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #FF6B00;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #FF6B00;
+  color: #000;
 }
