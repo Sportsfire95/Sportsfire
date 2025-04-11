@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const noticias = data.articles.map((article) => {
         return `
-          <div class="noticia">
+          <div class="noticia" style="margin-bottom: 20px; padding: 10px; background-color: #f4f4f4; border-radius: 10px;">
             <h3>${article.title}</h3>
-            <p>${article.description || ""}</p>
+            <p>${article.description || "Sin descripción disponible."}</p>
             <a href="${article.url}" target="_blank">Leer más</a>
           </div>
         `;
