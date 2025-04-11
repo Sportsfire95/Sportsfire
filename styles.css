@@ -84,3 +84,36 @@ footer {
   color: white;
   font-size: 0.9rem;
 }
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.noticia {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.noticia img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.noticia h3 {
+  font-size: 1.1rem;
+  margin: 0.5rem;
+}
+
+.noticia a {
+  text-decoration: none;
+  color: #e63946;
+  margin: 0.5rem;
+  font-weight: bold;
+}
