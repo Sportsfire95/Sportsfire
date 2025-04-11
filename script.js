@@ -36,18 +36,17 @@ async function responderVoz(texto) {
 
 async function obtenerNoticiasDeportivas() {
   try {
-    const respuesta = await fetch('https://newsapi.org/v2/top-headlines?category=sports&language=es&apiKey=e641c212093f4ff3b0b7709ac39a5606');
+    const respuesta = await fetch('https://newsapi.org/v2/top-headlines?country=es&category=sports&pageSize=3&apiKey=e641c212093f4ff3b0b7709ac39a5606');
     const datos = await respuesta.json();
 
     if (datos.articles && datos.articles.length > 0) {
-      const primeraNoticia = datos.articles[0].title;
-      return 'Última noticia deportiva: ' + primeraNoticia;
+      const titulos = datos.articles.map((articulo, index) => `${index + 1}. ${articulo.title}`).join('. ');
+      return 'Últimas noticias deportivas: ' + titulos;
     } else {
-      return 'No encontré noticias deportivas actuales ahora mismo.';
+      return 'No encontré noticias deportivas actuales en este momento.';
     }
   } catch (error) {
     console.error("Error al obtener noticias:", error);
-    return 'Hubo un problema al obtener las noticias en este momento.';
+    return 'Hubo un problema al obtener las noticias. Inténtalo más tarde.';
   }
 }
-
