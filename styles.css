@@ -1,21 +1,32 @@
-/* Estilos globales */
+/* Estilos base */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #121212;
-  color: #f5f5f5;
+  color: #f0f0f0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar */
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   background-color: #1e1e1e;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  padding: 0.8rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .logo-container {
@@ -24,97 +35,90 @@ header {
 }
 
 .logo {
-  height: 48px;
+  height: 40px;
+  width: auto;
   margin-right: 10px;
 }
 
 .brand-name {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #FF5F00;
+  background: linear-gradient(to right, #ff5f00, #ffffff, #ff9100);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+/* Navegación */
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1.2rem;
+  gap: 1.5rem;
 }
 
 .nav-links li a {
-  text-decoration: none;
-  color: #ccc;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-size: 1rem;
+  color: #f0f0f0;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
 }
 
 .nav-links li a:hover {
-  color: #FF5F00;
+  background-color: #ff5f00;
+  color: #000;
+  border-radius: 6px;
 }
 
-main {
-  padding: 2rem;
+/* Hero */
+#hero {
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  background: linear-gradient(to bottom, #1e1e1e, #121212);
 }
 
-h1, h2 {
-  color: #FF5F00;
-}
-
-h1 {
+#hero h1 {
   font-size: 2.5rem;
-}
-
-h2 {
-  font-size: 1.8rem;
-  margin-top: 2rem;
-}
-
-p {
-  line-height: 1.6;
-  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
 }
 
 .highlight {
-  color: #FF5F00;
+  color: #ff5f00;
 }
 
 .cta-button {
   display: inline-block;
   margin-top: 1rem;
-  padding: 0.7rem 1.5rem;
-  background: #FF5F00;
-  color: #fff;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background-color: #ff5f00;
+  color: #000;
   border: none;
   border-radius: 8px;
-  font-weight: bold;
-  font-size: 1rem;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
 }
 
 .cta-button:hover {
-  background: #e65100;
+  background-color: #ffa94d;
 }
 
-button {
-  padding: 0.6rem 1rem;
-  font-size: 1rem;
-  background-color: #444;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+/* Secciones */
+section {
+  padding: 3rem 2rem;
+  max-width: 1000px;
+  margin: auto;
 }
 
-button:hover {
-  background-color: #FF5F00;
+section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #ff9100;
 }
 
+/* Footer */
 footer {
-  background-color: #1e1e1e;
-  padding: 1rem;
   text-align: center;
-  color: #999;
-  margin-top: 3rem;
+  padding: 2rem;
   font-size: 0.9rem;
+  color: #888;
+  background-color: #1a1a1a;
 }
