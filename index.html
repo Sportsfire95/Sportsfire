@@ -9,30 +9,91 @@
   <link rel="icon" href="logo.png" type="image/png" />
   <script defer src="script.js"></script>
   <style>
-  .logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-  }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-  .logo {
-    height: 180px;
-    width: auto;
-  }
+    header {
+      background-color: #111;
+      padding: 10px 0;
+    }
 
-  .brand-name {
-    display: none;
-  }
-</style>
+    .navbar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
+    .logo-container {
+      margin-bottom: 10px;
+    }
 
+    .logo {
+      height: 80px;
+      cursor: pointer;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links li a:hover {
+      color: orange;
+    }
+
+    #hero {
+      text-align: center;
+      padding: 80px 20px;
+      background: #222;
+      color: white;
+    }
+
+    .highlight {
+      color: orange;
+    }
+
+    .cta-button {
+      background: orange;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      margin-top: 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav class="navbar">
       <div class="logo-container">
-       <img src="logo.png" alt="Sportsfire Logo" class="logo" />
+        <a href="#hero">
+          <img src="logo.png" alt="Sportsfire Logo" class="logo" />
+        </a>
       </div>
       <ul class="nav-links">
         <li><a href="#futbol">Fútbol</a></li>
@@ -47,6 +108,7 @@
 
   <main>
     <section id="hero">
+      <h1>Bienvenido a <span class="highlight">Sportsfire</span></h1>
       <p>El futuro del deporte en un solo lugar. Vive, escucha, predice y participa como nunca antes.</p>
       <a href="#premium" class="cta-button">Hazte Premium</a>
     </section>
@@ -107,5 +169,3 @@
   </footer>
 </body>
 </html>
-
-
