@@ -162,7 +162,15 @@
 
   <section id="comunidad" class="fade-in">
     <h2>Comunidad</h2>
-    <p>¡Pronto podrás interactuar con otros fans del deporte!</p>
+    <p>Comparte tus opiniones y habla con otros fans del deporte:</p>
+
+    <form id="comment-form" style="margin-top: 20px;">
+      <input type="text" id="name" placeholder="Tu nombre" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;">
+      <textarea id="comment" placeholder="Escribe tu comentario..." rows="4" required style="width: 100%; padding: 10px; border-radius: 5px; border: none;"></textarea>
+      <button type="submit" style="margin-top: 10px; padding: 10px 20px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">Publicar</button>
+    </form>
+
+    <div id="comments-section" style="margin-top: 30px;"></div>
   </section>
 
   <section id="premium" class="fade-in">
@@ -218,6 +226,24 @@
       }
     }
     fetchNews();
+  </script>
+
+  <script>
+    document.getElementById('comment-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const comment = document.getElementById('comment').value.trim();
+      if (name && comment) {
+        const commentBox = document.createElement('div');
+        commentBox.style.border = '1px solid #333';
+        commentBox.style.padding = '10px';
+        commentBox.style.borderRadius = '8px';
+        commentBox.style.marginBottom = '10px';
+        commentBox.innerHTML = `<strong>${name}</strong><p style="margin-top:5px;">${comment}</p>`;
+        document.getElementById('comments-section').prepend(commentBox);
+        document.getElementById('comment-form').reset();
+      }
+    });
   </script>
 
   <script type="text/javascript">
