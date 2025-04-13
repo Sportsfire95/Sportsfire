@@ -1,97 +1,41 @@
-/* styles.css */
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
   background-color: #111;
-  color: #eee;
-}
-
-a {
-  color: #ffa500;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #fff;
+  color: #f1f1f1;
 }
 
 header {
-  background-color: #1c1c1c;
-  padding: 20px 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links li a {
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo {
-  height: 90px;
-}
-
-main {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 0;
-}
-
-section {
-  margin-bottom: 60px;
-  background-color: #1a1a1a;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 10px rgba(255, 165, 0, 0.1);
-}
-
-h1, h2 {
-  color: #ffa500;
-}
-
-.cta-button {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  background: #ffa500;
-  color: #000;
-  font-weight: bold;
-  border-radius: 30px;
-  transition: 0.3s ease;
-  border: none;
-  cursor: pointer;
-}
-
-.cta-button:hover {
-  background-color: #ff7300;
+  text-align: center;
+  padding: 3rem 1rem;
+  background: linear-gradient(to right, #ff5500, #ff8800);
   color: #fff;
 }
 
-footer {
-  background-color: #1c1c1c;
+main {
+  padding: 2rem;
   text-align: center;
-  padding: 20px;
-  margin-top: 60px;
+}
+
+button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background-color: #ff5500;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #e64500;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #222;
   font-size: 0.9rem;
-  color: #888;
 }
