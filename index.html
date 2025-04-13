@@ -2,124 +2,97 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="SportsFire - Tu portal deportivo global"/>
-  <title>SportsFire</title>
-  <link rel="icon" href="logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportsFire - Portal Deportivo Global</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
     body {
-      background-color: #111;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
     }
 
     header {
+      background-color: #111;
+      padding: 20px 0;
       text-align: center;
-      background-color: #000;
-      padding: 10px;
+      border-bottom: 2px solid #ff4500;
     }
 
     header img {
       width: 250px;
+      max-width: 100%;
     }
 
-    h1 {
-      font-size: 2em;
-      margin: 0.5em 0;
-      color: orange;
+    nav {
+      margin-top: 15px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     h2 {
-      color: #f5f5f5;
-      margin-top: 40px;
-      text-align: center;
+      color: #ff4500;
+      border-bottom: 2px solid #ff4500;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
     }
 
-    section {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .noticias {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .noticia {
-      background-color: #222;
-      border-left: 4px solid orange;
-      padding: 10px 15px;
-      border-radius: 8px;
-    }
-
-    .noticia a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .noticia a:hover {
-      text-decoration: underline;
+    .noticias-container iframe {
+      width: 100%;
+      height: 350px;
+      border: none;
+      background-color: #111;
     }
 
     footer {
+      background-color: #111;
       text-align: center;
       padding: 20px;
-      background-color: #000;
-      color: #999;
+      color: #777;
+      border-top: 1px solid #222;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html"><img src="logo.png" alt="SportsFire Logo" /></a>
-    <h1>SportsFire</h1>
+    <a href="index.html">
+      <img src="logo.png" alt="SportsFire Logo" />
+    </a>
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Noticias</a>
+      <a href="#">Ligas</a>
+      <a href="#">Comunidad</a>
+      <a href="#">Premium</a>
+    </nav>
   </header>
 
-  <section>
-    <h2>Últimas noticias deportivas</h2>
-    <div class="noticias" id="feedNoticias">
-      <p>Cargando noticias...</p>
-    </div>
-  </section>
+  <main>
+    <section class="noticias-container">
+      <h2>Últimas noticias</h2>
+      <iframe src="https://rss.bloople.net/?url=https%3A%2F%2Fe00-marca.uecdn.es%2Frss%2Ftododeporte.xml&limit=5&showtitle=false&type=html" loading="lazy" scrolling="yes"></iframe>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 SportsFire - Todos los derechos reservados.
+    &copy; 2025 SportsFire. Todos los derechos reservados.
   </footer>
-
-  <script>
-  async function cargarNoticias() {
-    const rssUrl = "https://corsproxy.io/?https://e00-marca.uecdn.es/rss/tododeporte.xml";
-    try {
-      const res = await fetch(rssUrl);
-      const xmlText = await res.text();
-      const parser = new DOMParser();
-      const xml = parser.parseFromString(xmlText, "text/xml");
-      const items = xml.querySelectorAll("item");
-      const contenedor = document.getElementById("feedNoticias");
-      contenedor.innerHTML = "";
-
-      items.forEach((item, i) => {
-        if (i < 5) {
-          const title = item.querySelector("title").textContent;
-          const link = item.querySelector("link").textContent;
-          const div = document.createElement("div");
-          div.className = "noticia";
-          div.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
-          contenedor.appendChild(div);
-        }
-      });
-    } catch (err) {
-      console.error(err);
-      document.getElementById("feedNoticias").innerHTML = "<p>Error al cargar noticias.</p>";
-    }
-  }
-
-  cargarNoticias();
-</script>
-
 </body>
 </html>
