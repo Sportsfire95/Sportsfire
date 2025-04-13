@@ -3,199 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Sportsfire - Portal deportivo revolucionario. Noticias, fichajes, resultados, y experiencias inmersivas como nunca antes." />
-  <title>Sportsfire</title>
+  <title>SportsFire</title>
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="logo.png" type="image/png" />
-
-  <!-- Google Fonts: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-      background-color: #f9f9f9;
-      color: #222;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000000;
+      color: #FFFFFF;
     }
 
     header {
-      background-color: #000;
+      background-color: #111;
       padding: 20px 0;
       text-align: center;
     }
 
-    .logo {
+    header img {
       height: 250px;
     }
 
-    .navbar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
+    nav {
+      background-color: #222;
+      text-align: center;
+      padding: 10px 0;
     }
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      padding: 0;
-    }
-
-    .nav-links a {
-      color: #f9f9f9;
+    nav a {
+      color: #FFFFFF;
       text-decoration: none;
-      font-weight: 600;
+      margin: 0 15px;
+      font-weight: bold;
       transition: color 0.3s ease;
     }
 
-    .nav-links a:hover {
-      color: #f90;
+    nav a:hover {
+      color: #FF5500;
     }
 
     main {
       padding: 40px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    section {
-      margin-bottom: 50px;
-    }
-
-    h1, h2 {
-      color: #111;
       text-align: center;
     }
 
-    .highlight {
-      color: #f90;
+    h1, h2, h3 {
+      color: #FFFFFF;
+    }
+
+    p {
+      color: #DDDDDD;
     }
 
     .cta-button {
-      background-color: #f90;
-      color: #fff;
-      padding: 12px 24px;
+      background-color: #FF5500;
+      color: white;
       border: none;
-      border-radius: 30px;
+      padding: 12px 24px;
+      border-radius: 12px;
       font-weight: bold;
       cursor: pointer;
-      display: block;
-      margin: 20px auto 0;
-      transition: background 0.3s ease;
+      transition: background-color 0.3s ease;
+      margin-top: 20px;
     }
 
     .cta-button:hover {
-      background-color: #ff7300;
+      background-color: #FF3300;
     }
 
     footer {
-      background-color: #000;
-      color: #fff;
-      padding: 20px;
+      background-color: #111;
+      color: #CCCCCC;
       text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .logo {
-        height: 180px;
-      }
+      padding: 20px;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <div class="navbar">
-      <a href="index.html">
-        <img src="logo.png" alt="Sportsfire Logo" class="logo" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="#futbol">Fútbol</a></li>
-        <li><a href="#multideporte">Multideporte</a></li>
-        <li><a href="#mercado">Mercado</a></li>
-        <li><a href="#comunidad">Comunidad</a></li>
-        <li><a href="#tienda">Tienda</a></li>
-        <li><a href="#premium">Premium</a></li>
-      </ul>
-    </div>
+    <a href="index.html">
+      <img src="logo.png" alt="SportsFire Logo" />
+    </a>
   </header>
 
+  <nav>
+    <a href="#noticias">Noticias</a>
+    <a href="#comunidad">Comunidad</a>
+    <a href="#premium">Zona Premium</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
   <main>
-    <section id="hero">
-      <h1>Bienvenido a <span class="highlight">Sportsfire</span></h1>
-      <p style="text-align: center; color: #333;">El futuro del deporte en un solo lugar. Vive, escucha, predice y participa como nunca antes.</p>
-      <a href="#premium" class="cta-button">Hazte Premium</a>
-    </section>
-
-    <section id="futbol">
-      <h2>Fútbol</h2>
-      <p>Todo sobre LaLiga, Champions, fichajes, estadísticas en tiempo real y visualización 3D de jugadas clave.</p>
-    </section>
-
-    <section id="multideporte">
-      <h2>Multideporte</h2>
-      <p>F1 con datos en vivo, tenis con predicción IA, eSports con streaming integrado.</p>
-    </section>
-
-    <section id="mercado">
-      <h2>Mercado y Tweets en vivo</h2>
-      <div id="tweets-stream">
-        <p>Cargando tweets en vivo de expertos como @FabrizioRomano, @Nico_Abatel y más...</p>
-      </div>
-    </section>
-
-    <section id="voz">
-      <h2>Asistente de Voz Deportiva</h2>
-      <p>Di: "¿Qué ha pasado en el Madrid hoy?" y nuestro sistema lo narrará con voz natural.</p>
-      <button class="cta-button" onclick="activarVoz()">Activar asistente</button>
-    </section>
-
-    <section id="comunidad">
-      <h2>Comunidad</h2>
-      <p>Predicciones interactivas, debates en vivo, foros y competiciones fantasy con recompensas reales.</p>
-    </section>
-
-    <section id="tienda">
-      <h2>Tienda</h2>
-      <p>Equipaciones exclusivas, artículos retro, NFTs deportivos únicos y sorteos con premios semanales.</p>
-    </section>
-
-    <section id="premium">
-      <h2>Hazte Premium</h2>
-      <ul>
-        <li>Noticias antes que nadie</li>
-        <li>Dictado personalizado diario por voz</li>
-        <li>Predicciones IA para apuestas legales</li>
-        <li>Contenido sin publicidad</li>
-        <li>Acceso a eventos y torneos privados</li>
-      </ul>
-      <button class="cta-button">Suscribirme</button>
-    </section>
-
-    <section id="explora">
-      <h2>Explora el Deporte en 360º</h2>
-      <p>Visualiza estadios y jugadas clave en 3D, recorre vestuarios y revive goles históricos con realidad aumentada.</p>
-    </section>
+    <h1>Bienvenido a SportsFire</h1>
+    <p>Tu portal deportivo global. Noticias, comunidad, contenido exclusivo y mucho más.</p>
+    <button class="cta-button">Explora ahora</button>
   </main>
 
   <footer>
-    <p>&copy; 2025 Sportsfire. Revoluciona tu forma de vivir el deporte.</p>
+    <p>&copy; 2025 SportsFire. Todos los derechos reservados.</p>
   </footer>
-
 </body>
 </html>
