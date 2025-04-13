@@ -91,27 +91,35 @@
   </footer>
 
   <script>
-    async function cargarNoticias() {
-      const rssUrl = 'https://www.marca.com/rss/tododeporte.xml'; // Fuente pública
-      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-      
-      try {
-        const res = await fetch(apiUrl);
-        const data = await res.json();
-        const contenedor = document.getElementById("feedNoticias");
-        contenedor.innerHTML = "";
-        data.items.slice(0, 5).forEach(item => {
+  async function cargarNoticias() {
+    const rssUrl = "https://corsproxy.io/?https://e00-marca.uecdn.es/rss/tododeporte.xml";
+    try {
+      const res = await fetch(rssUrl);
+      const xmlText = await res.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(xmlText, "text/xml");
+      const items = xml.querySelectorAll("item");
+      const contenedor = document.getElementById("feedNoticias");
+      contenedor.innerHTML = "";
+
+      items.forEach((item, i) => {
+        if (i < 5) {
+          const title = item.querySelector("title").textContent;
+          const link = item.querySelector("link").textContent;
           const div = document.createElement("div");
           div.className = "noticia";
-          div.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`;
+          div.innerHTML = `<a href="${link}" target="_blank">${title}</a>`;
           contenedor.appendChild(div);
-        });
-      } catch (err) {
-        document.getElementById("feedNoticias").innerHTML = "<p>Error al cargar noticias.</p>";
-      }
+        }
+      });
+    } catch (err) {
+      console.error(err);
+      document.getElementById("feedNoticias").innerHTML = "<p>Error al cargar noticias.</p>";
     }
+  }
 
-    cargarNoticias();
-  </script>
+  cargarNoticias();
+</script>
+
 </body>
 </html>
