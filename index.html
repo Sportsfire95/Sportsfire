@@ -7,111 +7,76 @@
   <title>SportsFire</title>
   <link rel="icon" href="logo.png" />
   <style>
-    body {
-      background-color: #111;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+  #feedNoticias .noticia {
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
 
-    header {
-      text-align: center;
-      background-color: #000;
-      padding: 10px;
-    }
+  #feedNoticias .noticia a {
+    color: white;
+    text-decoration: none;
+  }
 
-    header img {
-      width: 250px;
-    }
+  #feedNoticias .noticia a:hover {
+    text-decoration: underline;
+  }
 
-    h1 {
-      font-size: 2em;
-      margin: 0.5em 0;
-      color: orange;
-    }
+  .noticias-section {
+    padding: 20px;
+    background-color: #111;
+    color: white;
+  }
 
-    h2 {
-      color: #f5f5f5;
-      margin-top: 40px;
-      text-align: center;
-    }
+  .noticias-section h2 {
+    margin-bottom: 15px;
+  }
+</style>
 
-    section {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .noticias {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .noticia {
-      background-color: #222;
-      border-left: 4px solid orange;
-      padding: 10px 15px;
-      border-radius: 8px;
-    }
-
-    .noticia a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .noticia a:hover {
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #000;
-      color: #999;
-    }
-  </style>
 </head>
 <body>
   <header>
     <a href="index.html"><img src="logo.png" alt="SportsFire Logo" /></a>
   </header>
 
-  <section>
-    <h2>Últimas noticias deportivas</h2>
-    <div class="noticias" id="feedNoticias">
-      <p>Cargando noticias...</p>
-    </div>
-  </section>
+  <section id="noticias" class="noticias-section">
+  <h2>Últimas noticias deportivas</h2>
+  <div id="feedNoticias">Cargando noticias...</div>
+</section>
+
 
   <footer>
     &copy; 2025 SportsFire - Todos los derechos reservados.
   </footer>
 
   <script>
-    async function cargarNoticias() {
-      const apiKey = e641c212093f4ff3b0b7709ac39a5606
-      const url = `https://newsapi.org/v2/top-headlines?category=sports&language=es&pageSize=5&apiKey=${apiKey}`;
+  async function cargarNoticias() {
+    const apiKey = 'e641c212093f4ff3b0b7709ac39a5606';
+    const url = `https://newsapi.org/v2/top-headlines?category=sports&language=es&pageSize=5&apiKey=${apiKey}`;
 
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        const contenedor = document.getElementById("feedNoticias");
-        contenedor.innerHTML = "";
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      const contenedor = document.getElementById("feedNoticias");
+      contenedor.innerHTML = "";
 
+      if (data.status === "ok" && data.articles.length > 0) {
         data.articles.forEach(article => {
           const div = document.createElement("div");
           div.className = "noticia";
           div.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
           contenedor.appendChild(div);
         });
-      } catch (err) {
-        document.getElementById("feedNoticias").innerHTML = "<p>Error al cargar noticias.</p>";
+      } else {
+        contenedor.innerHTML = "<p>No hay noticias disponibles por el momento.</p>";
       }
+    } catch (err) {
+      document.getElementById("feedNoticias").innerHTML = "<p>Error al cargar noticias.</p>";
+      console.error("Error al cargar noticias:", err);
     }
+  }
 
-    cargarNoticias();
-  </script>
+  cargarNoticias();
+</script>
+
 </body>
 </html>
