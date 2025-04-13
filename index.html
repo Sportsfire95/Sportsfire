@@ -2,48 +2,259 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sportsfire</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SportsFire - El portal deportivo más ambicioso del mundo. Noticias, comunidad, contenido premium y más." />
+  <meta name="keywords" content="deportes, noticias deportivas, fútbol, baloncesto, sportsfire, comunidad, premium" />
+  <meta name="author" content="SportsFire" />
+  <title>SportsFire</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="logo.png" type="image/png">
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      background-color: #111;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      background-color: #1a1a1a;
+      animation: fadeInDown 1s ease-out;
+    }
+    header img {
+      width: 250px;
+      max-width: 90%;
+    }
+    nav {
+      background-color: #222;
+      text-align: center;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: orange;
+    }
+    section {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      color: white;
+    }
+    .news-card {
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .news-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .news-content {
+      padding: 15px;
+    }
+    .news-content h3 {
+      margin-top: 0;
+    }
+    .news-content p {
+      color: #ccc;
+    }
+    .news-content a {
+      display: inline-block;
+      margin-top: 10px;
+      color: white;
+      background-color: orange;
+      padding: 8px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .news-content a:hover {
+      background-color: #ff9900;
+    }
+    footer {
+      background-color: #1a1a1a;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+    }
+    .social-icons {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: orange;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media screen and (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <h1>🔥 Sportsfire</h1>
-    <p>El nuevo portal deportivo que lo cambia todo.</p>
+  <header class="fade-in">
+    <a href="/">
+      <img src="logo.png" alt="SportsFire Logo" />
+    </a>
   </header>
 
-  <main>
-    <section>
-      <h2>Noticias, Comunidad y Zona Premium</h2>
-      <p>Accede a contenido exclusivo, estadísticas avanzadas y mucho más.</p>
-      <button id="premiumBtn">Explora el Área Premium</button>
-    </section>
-  </main>
+  <nav class="fade-in">
+    <a href="#noticias">Últimas Noticias</a>
+    <a href="#comunidad">Comunidad</a>
+    <a href="#premium">Área Premium</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
 
-  <footer>
-    <p>&copy; 2025 Sportsfire. Todos los derechos reservados.</p>
+  <section id="noticias" class="fade-in">
+    <h2>Últimas Noticias</h2>
+    <div id="news-container">Cargando noticias...</div>
+  </section>
+
+  <section id="comunidad" class="fade-in">
+    <h2>Comunidad</h2>
+    <p>Comparte tus opiniones y habla con otros fans del deporte:</p>
+
+    <form id="comment-form" style="margin-top: 20px;">
+      <input type="text" id="name" placeholder="Tu nombre" required style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;">
+      <textarea id="comment" placeholder="Escribe tu comentario..." rows="4" required style="width: 100%; padding: 10px; border-radius: 5px; border: none;"></textarea>
+      <button type="submit" style="margin-top: 10px; padding: 10px 20px; background-color: orange; color: white; border: none; border-radius: 5px; cursor: pointer;">Publicar</button>
+    </form>
+
+    <div id="comments-section" style="margin-top: 30px;"></div>
+  </section>
+
+  <section id="premium" class="fade-in">
+    <h2>Área Premium</h2>
+    <p>Contenido exclusivo para suscriptores. ¡Muy pronto disponible!</p>
+  </section>
+
+  <section id="contacto" class="fade-in">
+    <h2>Contacto</h2>
+    <p>¿Tienes alguna sugerencia o deseas colaborar con nosotros? Escríbenos a <a href="mailto:contacto@sportsfire.es" style="color: orange;">contacto@sportsfire.es</a></p>
+  </section>
+
+  <div id="google_translate_element" style="text-align: center; padding: 1rem;"></div>
+
+  <footer class="fade-in">
+    <p>&copy; 2025 SportsFire. Todos los derechos reservados.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-twitter" aria-label="Twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook" aria-label="Facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram" aria-label="Instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube" aria-label="YouTube"></i></a>
+    </div>
   </footer>
 
-  <!-- Firebase SDK -->
-  <script type="module">
-    // Importar SDKs desde Firebase
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
-
-    // Configuración del proyecto Sportsfire
-    const firebaseConfig = {
-      apiKey: "AIzaSyDe85b6hKD3UvBEh9SXGIb7itdUmElzk",
-      authDomain: "sportsfire-ba419.firebaseapp.com",
-      projectId: "sportsfire-ba419",
-      storageBucket: "sportsfire-ba419.appspot.com",
-      messagingSenderId: "654328055996",
-      appId: "1:654328055996:web:d5924f283cd2f65701fb79",
-      measurementId: "G-YC9B2L5708"
-    };
-
-    // Inicializar Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+  <script>
+    async function fetchNews() {
+      const apiKey = 'e641c212093f4ff3b0b7709ac39a5606';
+      const url = `https://newsapi.org/v2/top-headlines?category=sports&language=es&pageSize=5&apiKey=${apiKey}`;
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const container = document.getElementById('news-container');
+        container.innerHTML = '';
+        if (data.articles && data.articles.length > 0) {
+          data.articles.forEach(article => {
+            const card = document.createElement('div');
+            card.className = 'news-card';
+            card.innerHTML = `
+              ${article.urlToImage ? `<img src="${article.urlToImage}" alt="Imagen noticia">` : ''}
+              <div class="news-content">
+                <h3>${article.title}</h3>
+                <p>${article.description || ''}</p>
+                <a href="${article.url}" target="_blank">Leer más</a>
+              </div>
+            `;
+            container.appendChild(card);
+          });
+        } else {
+          container.innerHTML = '<p>No hay noticias disponibles en este momento.</p>';
+        }
+      } catch (error) {
+        document.getElementById('news-container').innerHTML = '<p>Error al cargar noticias.</p>';
+      }
+    }
+    fetchNews();
   </script>
+
+  <script>
+    document.getElementById('comment-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const comment = document.getElementById('comment').value.trim();
+      if (name && comment) {
+        const commentBox = document.createElement('div');
+        commentBox.style.border = '1px solid #333';
+        commentBox.style.padding = '10px';
+        commentBox.style.borderRadius = '8px';
+        commentBox.style.marginBottom = '10px';
+        commentBox.innerHTML = `<strong>${name}</strong><p style="margin-top:5px;">${comment}</p>`;
+        document.getElementById('comments-section').prepend(commentBox);
+        document.getElementById('comment-form').reset();
+      }
+    });
+  </script>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        includedLanguages: 'es,en,fr,de,it,pt,ru,ja,zh-CN,ar',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
