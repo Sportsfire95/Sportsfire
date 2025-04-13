@@ -10,53 +10,46 @@
   <script defer src="script.js"></script>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #111;
-      padding: 10px 0;
+      font-family: Arial, sans-serif;
     }
 
     .navbar {
       display: flex;
       flex-direction: column;
       align-items: center;
+      background-color: #111;
+      padding: 1rem;
     }
 
     .logo-container {
-      margin-bottom: 10px;
+      text-align: center;
     }
 
     .logo {
-      height: 250px;
+      height: 100px;
       cursor: pointer;
     }
 
     .nav-links {
-      list-style: none;
       display: flex;
-      gap: 20px;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      list-style: none;
       padding: 0;
+      margin: 1rem 0 0;
     }
 
     .nav-links li a {
-      color: #fff;
       text-decoration: none;
+      color: white;
       font-weight: bold;
-    }
-
-    .nav-links li a:hover {
-      color: orange;
     }
 
     #hero {
       text-align: center;
-      padding: 80px 20px;
-      background: #222;
-      color: white;
+      padding: 2rem;
     }
 
     .highlight {
@@ -64,26 +57,29 @@
     }
 
     .cta-button {
-      background: orange;
+      background-color: orange;
       color: white;
-      padding: 10px 20px;
-      border: none;
-      margin-top: 20px;
-      font-size: 16px;
-      cursor: pointer;
+      padding: 1rem 2rem;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1rem;
     }
 
     section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
+      padding: 2rem;
     }
 
     footer {
-      background: #111;
-      color: white;
       text-align: center;
-      padding: 20px 10px;
+      padding: 1rem;
+      background-color: #f4f4f4;
+    }
+
+    @media (max-width: 768px) {
+      .cta-button {
+        font-size: 0.9rem;
+        padding: 0.8rem 1.6rem;
+      }
     }
   </style>
 </head>
@@ -91,8 +87,8 @@
   <header>
     <nav class="navbar">
       <div class="logo-container">
-        <a href="#hero">
-          <img src="logo.png" alt="Sportsfire Logo" class="logo" />
+        <a href="/">
+          <img src="https://drive.google.com/uc?export=view&id=160-rrGHRqMxZFlIKQIvdDO895TMMo9Ug" alt="Sportsfire Logo" class="logo" />
         </a>
       </div>
       <ul class="nav-links">
@@ -169,3 +165,4 @@
   </footer>
 </body>
 </html>
+
