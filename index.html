@@ -1,131 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="SportsFire - Tu portal deportivo global"/>
   <title>SportsFire</title>
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" href="logo.png" />
   <style>
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #121212;
+      background-color: #111;
       color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
     }
 
     header {
-      background-color: #1f1f1f;
-      padding: 20px 0;
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      background-color: #000;
+      padding: 10px;
     }
 
     header img {
-      height: 250px;
-      display: block;
-      margin: 0 auto;
+      width: 250px;
     }
 
-    nav {
-      background-color: #2c2c2c;
-      text-align: center;
-      padding: 10px 0;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
+    h1 {
+      font-size: 2em;
+      margin: 0.5em 0;
       color: orange;
     }
 
-    main {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h1, h2, h3 {
-      color: white;
+    h2 {
+      color: #f5f5f5;
+      margin-top: 40px;
+      text-align: center;
     }
 
     section {
-      margin-bottom: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    #feed-container a {
-      color: #ffa500;
+    .noticias {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .noticia {
+      background-color: #222;
+      border-left: 4px solid orange;
+      padding: 10px 15px;
+      border-radius: 8px;
+    }
+
+    .noticia a {
+      color: white;
       text-decoration: none;
-      font-size: 18px;
     }
 
-    #feed-container a:hover {
+    .noticia a:hover {
       text-decoration: underline;
     }
 
     footer {
-      background-color: #1f1f1f;
       text-align: center;
       padding: 20px;
-      color: #888;
+      background-color: #000;
+      color: #999;
     }
   </style>
 </head>
-
 <body>
   <header>
-    <a href="index.html">
-      <img src="logo.png" alt="SportsFire Logo">
-    </a>
+    <a href="index.html"><img src="logo.png" alt="SportsFire Logo" /></a>
+    <h1>SportsFire</h1>
   </header>
 
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#noticias">Noticias</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <main>
-    <section id="inicio">
-      <h1>Bienvenido a SportsFire</h1>
-      <p>El portal deportivo más innovador y ambicioso. Aquí encontrarás noticias actualizadas, cobertura en múltiples idiomas y mucho más. ¡Prepárate para vivir el deporte como nunca antes!</p>
-    </section>
-
-    <section id="noticias">
-      <h2>📰 Últimas Noticias Deportivas</h2>
-      <div id="feed-container">
-        <p>Cargando noticias deportivas en tiempo real...</p>
-      </div>
-    </section>
-
-    <section id="contacto">
-      <h2>Contacto</h2>
-      <p>Puedes escribirnos a contacto@sportsfire.es</p>
-    </section>
-  </main>
+  <section>
+    <h2>Últimas noticias deportivas</h2>
+    <div class="noticias" id="feedNoticias">
+      <p>Cargando noticias...</p>
+    </div>
+  </section>
 
   <footer>
-    <p>&copy; 2025 SportsFire. Todos los derechos reservados.</p>
+    &copy; 2025 SportsFire - Todos los derechos reservados.
   </footer>
 
   <script>
-    fetch("https://api.rss2json.com/v1/api.json?rss_url=https://e00-marca.uecdn.es/rss/portada.xml")
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("feed-container");
-        container.innerHTML = "";
-        data.items.slice(0, 5).forEach(noticia => {
+    async function cargarNoticias() {
+      const rssUrl = 'https://www.marca.com/rss/tododeporte.xml'; // Fuente pública
+      const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+      
+      try {
+        const res = await fetch(apiUrl);
+        const data = await res.json();
+        const contenedor = document.getElementById("feedNoticias");
+        contenedor.innerHTML = "";
+        data.items.slice(0, 5).forEach(item => {
           const div = document.createElement("div");
-          div.innerHTML = `<a href="${noticia.link}" target="_blank">${noticia.title}</a><br><br>`;
-          container.appendChild(div);
+          div.className = "noticia";
+          div.innerHTML = `<a href="${item.link}" target="_blank">${item.title}</a>`;
+          contenedor.appendChild(div);
         });
-      });
+      } catch (err) {
+        document.getElementById("feedNoticias").innerHTML = "<p>Error al cargar noticias.</p>";
+      }
+    }
+
+    cargarNoticias();
   </script>
 </body>
-
 </html>
