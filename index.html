@@ -91,7 +91,7 @@
 
   <script>
     async function cargarNoticias() {
-      const apiKey = 'e641c212093f4ff3b0b7709ac39a5606';
+      const apiKey = 'TU_CLAVE_DE_API'; // Reemplaza con tu clave de API
       const url = `https://newsapi.org/v2/top-headlines?category=sports&language=es&pageSize=5&apiKey=${apiKey}`;
 
       try {
@@ -100,16 +100,12 @@
         const contenedor = document.getElementById("feedNoticias");
         contenedor.innerHTML = "";
 
-        if (data.articles && data.articles.length > 0) {
-          data.articles.forEach(article => {
-            const div = document.createElement("div");
-            div.className = "noticia";
-            div.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
-            contenedor.appendChild(div);
-          });
-        } else {
-          contenedor.innerHTML = "<p>No hay noticias disponibles por el momento.</p>";
-        }
+        data.articles.forEach(article => {
+          const div = document.createElement("div");
+          div.className = "noticia";
+          div.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
+          contenedor.appendChild(div);
+        });
       } catch (err) {
         document.getElementById("feedNoticias").innerHTML = "<p>Error al cargar noticias.</p>";
       }
