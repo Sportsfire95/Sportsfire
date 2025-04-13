@@ -26,12 +26,19 @@
       background-color: #222;
       text-align: center;
       padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
     nav a {
       color: white;
       text-decoration: none;
       margin: 0 15px;
       font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: orange;
     }
     section {
       padding: 20px;
@@ -47,40 +54,76 @@
       text-align: center;
       padding: 20px;
     }
+    .social-icons {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: white;
+      font-size: 1.5rem;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: orange;
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
   </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
+  <header class="fade-in">
     <a href="/">
       <img src="logo.png" alt="SportsFire Logo" />
     </a>
   </header>
 
-  <nav>
+  <nav class="fade-in">
     <a href="#noticias">Últimas Noticias</a>
     <a href="#comunidad">Comunidad</a>
     <a href="#premium">Área Premium</a>
+    <a href="#contacto">Contacto</a>
   </nav>
 
-  <section id="noticias">
+  <section id="noticias" class="fade-in">
     <h2>Últimas Noticias</h2>
     <div id="news-container">Cargando noticias...</div>
   </section>
 
-  <section id="comunidad">
+  <section id="comunidad" class="fade-in">
     <h2>Comunidad</h2>
     <p>¡Pronto podrás interactuar con otros fans del deporte!</p>
   </section>
 
-  <section id="premium">
+  <section id="premium" class="fade-in">
     <h2>Área Premium</h2>
     <p>Contenido exclusivo para suscriptores. ¡Muy pronto disponible!</p>
   </section>
 
+  <section id="contacto" class="fade-in">
+    <h2>Contacto</h2>
+    <p>¿Tienes alguna sugerencia o deseas colaborar con nosotros? Escríbenos a <a href="mailto:contacto@sportsfire.es" style="color: orange;">contacto@sportsfire.es</a></p>
+  </section>
+
   <div id="google_translate_element" style="text-align: center; padding: 1rem;"></div>
 
-  <footer>
+  <footer class="fade-in">
     <p>&copy; 2025 SportsFire. Todos los derechos reservados.</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
   </footer>
 
   <script>
