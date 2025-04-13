@@ -2,81 +2,135 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="SportsFire - Tu portal deportivo global"/>
-  <title>SportsFire</title>
-  <link rel="icon" href="logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportsFire - Portal Deportivo Global</title>
   <style>
-  #feedNoticias .noticia {
-    margin-bottom: 12px;
-    font-size: 1.1rem;
-  }
+    body {
+      margin: 0;
+      background-color: #121212;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-  #feedNoticias .noticia a {
-    color: white;
-    text-decoration: none;
-  }
+    header {
+      text-align: center;
+      padding: 20px 10px;
+      background-color: #1e1e1e;
+      border-bottom: 2px solid #ff4500;
+    }
 
-  #feedNoticias .noticia a:hover {
-    text-decoration: underline;
-  }
+    header img {
+      width: 250px;
+    }
 
-  .noticias-section {
-    padding: 20px;
-    background-color: #111;
-    color: white;
-  }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px 0;
+      background-color: #1a1a1a;
+      border-bottom: 1px solid #333;
+    }
 
-  .noticias-section h2 {
-    margin-bottom: 15px;
-  }
-</style>
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
+    nav a:hover {
+      color: #ff4500;
+    }
+
+    .noticias-section {
+      padding: 30px 20px;
+      background-color: #111;
+    }
+
+    .noticias-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #ff4500;
+      text-align: center;
+    }
+
+    #feedNoticias .noticia {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    #feedNoticias .noticia a {
+      color: white;
+      text-decoration: none;
+    }
+
+    #feedNoticias .noticia a:hover {
+      text-decoration: underline;
+      color: #ff4500;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      background-color: #1e1e1e;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
+
   <header>
-    <a href="index.html"><img src="logo.png" alt="SportsFire Logo" /></a>
+    <a href="/">
+      <img src="logo.png" alt="SportsFire Logo" />
+    </a>
   </header>
 
-  <section id="noticias" class="noticias-section">
-  <h2>Últimas noticias deportivas</h2>
-  <div id="feedNoticias">Cargando noticias...</div>
-</section>
+  <nav>
+    <a href="#noticias">Noticias</a>
+    <a href="#">Resultados</a>
+    <a href="#">Calendario</a>
+    <a href="#">Comunidad</a>
+    <a href="#">Área Premium</a>
+  </nav>
 
+  <section id="noticias" class="noticias-section">
+    <h2>Últimas noticias deportivas</h2>
+    <div id="feedNoticias">Cargando noticias...</div>
+  </section>
 
   <footer>
-    &copy; 2025 SportsFire - Todos los derechos reservados.
+    © 2025 SportsFire. Todos los derechos reservados.
   </footer>
 
   <script>
-  async function cargarNoticias() {
-    const apiKey = 'e641c212093f4ff3b0b7709ac39a5606';
-    const url = `https://newsapi.org/v2/top-headlines?category=sports&language=es&pageSize=5&apiKey=${apiKey}`;
+    async function cargarNoticias() {
+      const apiKey = 'e641c212093f4ff3b0b7709ac39a5606';
+      const url = `https://newsapi.org/v2/top-headlines?category=sports&language=es&pageSize=5&apiKey=${apiKey}`;
 
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      const contenedor = document.getElementById("feedNoticias");
-      contenedor.innerHTML = "";
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const contenedor = document.getElementById("feedNoticias");
+        contenedor.innerHTML = "";
 
-      if (data.status === "ok" && data.articles.length > 0) {
-        data.articles.forEach(article => {
-          const div = document.createElement("div");
-          div.className = "noticia";
-          div.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
-          contenedor.appendChild(div);
-        });
-      } else {
-        contenedor.innerHTML = "<p>No hay noticias disponibles por el momento.</p>";
+        if (data.status === "ok" && data.articles.length > 0) {
+          data.articles.forEach(article => {
+            const div = document.createElement("div");
+            div.className = "noticia";
+            div.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
+            contenedor.appendChild(div);
+          });
+        } else {
+          contenedor.innerHTML = "<p>No hay noticias disponibles por el momento.</p>";
+        }
+      } catch (err) {
+        document.getElementById("feedNoticias").innerHTML = "<p>Error al cargar noticias.</p>";
+        console.error("Error al cargar noticias:", err);
       }
-    } catch (err) {
-      document.getElementById("feedNoticias").innerHTML = "<p>Error al cargar noticias.</p>";
-      console.error("Error al cargar noticias:", err);
     }
-  }
 
-  cargarNoticias();
-</script>
-
+    cargarNoticias();
+  </script>
 </body>
 </html>
